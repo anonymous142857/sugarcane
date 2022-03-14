@@ -103,11 +103,7 @@
         while (true) {
           let k = Number(prompt('몇 곱하기 몇 정사각형입니까? (1 이상 99 이하의 자연수)'));
           if (!k) {
-            if (n === undefined) {
-              return 7;
-            } else {
-              return false;
-            }
+            return false;
           }
           if (typeof k === 'number' && k > 0 && k < 100 && k % 1 === 0) {
             return k;
@@ -115,7 +111,7 @@
         }
       }
 
-      var n = getN();
+      var n = 7;
 
       function getCell(x, y) {
         if (x > -1 && x < n && y > -1 && y < n) return table.rows[y].cells[x];
