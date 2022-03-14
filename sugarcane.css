@@ -42,6 +42,12 @@ body {
   justify-content: center;
 }
 
+.abs {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
 #land {
   border-collapse: collapse;
   user-select: none;
@@ -50,10 +56,59 @@ body {
 
 td {
   border: 3px solid black;
-  min-width: 50px;
-  height: 50px;
   text-align: center;
   cursor: pointer;
+  min-width: 50px;
+  height: 50px;
+}
+
+#land[zoom="4"] td {
+  min-width: 122px;
+  height: 122px;
+}
+
+#land[zoom="3"] td {
+  min-width: 98px;
+  height: 98px;
+}
+
+#land[zoom="2"] td {
+  min-width: 78px;
+  height: 78px;
+}
+
+#land[zoom="1"] td {
+  min-width: 62px;
+  height: 62px;
+}
+
+#land[zoom="0"] td {
+  min-width: 50px;
+  height: 50px;
+}
+
+#land[zoom="-1"] td {
+  min-width: 40px;
+  height: 40px;
+}
+
+#land[zoom="-2"] td {
+  min-width: 32px;
+  height: 32px;
+  border: 2px solid black;
+}
+
+#land[zoom="-3"] td {
+  min-width: 22px;
+  height: 22px;
+  border: 2px solid black;
+}
+
+#land[zoom="-4"] td {
+  min-width: 13px;
+  height: 13px;
+  font-size: .7rem;
+  border: 1px solid black;
 }
 
 .sugar {
@@ -67,4 +122,21 @@ td {
 
 .pdlr5 {
   padding: 0 5px;
+}
+
+input.button {
+  background-color: #1FB1BF;
+  border: 3px solid black;
+  padding: 3px 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+}
+
+input.zoom {
+  background-color: #ffffff;
+  width: 30px;
+  height: 30px;
+  border-top: 0;
 }

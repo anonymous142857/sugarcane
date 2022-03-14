@@ -3,6 +3,16 @@ let wateredCountContainer = document.getElementById('watered-count');
 let sugarCountContainer = document.getElementById('sugar-count');
 let lossCountContainer = document.getElementById('loss-count');
 
+function zoomOut() {
+  let zoomlvl = Number(table.getAttribute('zoom'));
+  if (zoomlvl > -4) table.setAttribute('zoom', zoomlvl-1)
+}
+
+function zoomIn() {
+  let zoomlvl = Number(table.getAttribute('zoom'));
+  if (zoomlvl < 4) table.setAttribute('zoom', zoomlvl+1)
+}
+
 function getN() {
   while (true) {
     let k = Number(prompt('몇 곱하기 몇 정사각형입니까? (1 이상 99 이하의 자연수)'));

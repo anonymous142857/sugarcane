@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>사탕수수 그림 만들기</title>
+    <title>사탕수수 그림 그리기</title>
     <link rel="stylesheet" href="sugarcane.css">
   </head>
   <body>
@@ -14,12 +14,19 @@
         <div class="pdlr5">L = <span id="loss-count">0</span></div>
       </div>
       <div class="tbl-wrapper mgbt10">
-        <table id="land">
+        <table id="land" zoom="0">
         </table>
       </div>
       <div class="menu flex fjc">
-        <div class="pdlr5"><input type="reset" onclick="createTable(n);" value="지우기"></input></div>
-        <div class="pdlr5"><input type="reset" onclick="let m = getN(); if (m !== false) {n = m; createTable(n);}" value="바꾸기"></input></div>
+        <div class="pdlr5"><input class="button" type="reset" onclick="createTable(n);" value="지우기"></input></div>
+        <div class="pdlr5"><input class="button" type="reset" onclick="let m = getN(); if (m !== false) {n = m; createTable(n);}" value="바꾸기"></input></div>
+      </div>
+    </div>
+    <div class="abs">
+      <div class="pdlr5">
+        <input class="button zoom" style="border-right: 0;" type="button" onclick="zoomIn();" value="+"></input><input class="button zoom" type="button" onclick="zoomOut();" value="-"></input>
+      </div>
+      <div class="pdlr5">
       </div>
     </div>
     <script type="text/javascript" src="sugarcane.js">
