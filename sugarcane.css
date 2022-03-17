@@ -120,6 +120,14 @@ td {
   color: transparent;
 }
 
+.hide-loss td {
+  color: transparent;
+}
+
+.opac {
+  color: #d3d3d3;
+}
+
 .pdlr5 {
   padding: 0 5px;
 }

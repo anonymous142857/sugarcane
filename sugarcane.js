@@ -3,6 +3,32 @@ let wateredCountContainer = document.getElementById('watered-count');
 let sugarCountContainer = document.getElementById('sugar-count');
 let lossCountContainer = document.getElementById('loss-count');
 
+let lossTogg = document.getElementById('loss-togg');
+
+var h1 = ((ihl = localStorage.getItem('hide-loss')) === null) ? 1 : Number(ihl);
+
+console.log(h1)
+
+if (h1 === 0) {
+  document.body.classList.remove('hide-loss');
+  lossTogg.classList.remove('opac');
+}
+
+lossTogg.addEventListener('click', function (e){
+  if (h1 === 1) {
+    localStorage.setItem('hide-loss', 0);
+    document.body.classList.remove('hide-loss');
+    lossTogg.classList.remove('opac');
+    h1 = 0;
+  } else {
+    localStorage.setItem('hide-loss', 1);
+    document.body.classList.add('hide-loss');
+    lossTogg.classList.add('opac');
+    h1 = 1;
+  }
+})
+
+
 const params = new Proxy(new URLSearchParams(window.location.search), {
   get: (searchParams, prop) => searchParams.get(prop)
 });
