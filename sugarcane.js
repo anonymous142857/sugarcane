@@ -4,7 +4,7 @@ let sugarCountContainer = document.getElementById('sugar-count');
 let lossCountContainer = document.getElementById('loss-count');
 
 const params = new Proxy(new URLSearchParams(window.location.search), {
-  get: (searchParams, prop) => searchParams.get(prop),
+  get: (searchParams, prop) => searchParams.get(prop)
 });
 
 function zoomOut() {
