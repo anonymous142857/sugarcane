@@ -3,6 +3,10 @@ let wateredCountContainer = document.getElementById('watered-count');
 let sugarCountContainer = document.getElementById('sugar-count');
 let lossCountContainer = document.getElementById('loss-count');
 
+const params = new Proxy(new URLSearchParams(window.location.search), {
+  get: (searchParams, prop) => searchParams.get(prop),
+});
+
 function zoomOut() {
   let zoomlvl = Number(table.getAttribute('zoom'));
   if (zoomlvl > -4) table.setAttribute('zoom', zoomlvl-1)
@@ -25,7 +29,8 @@ function getN() {
   }
 }
 
-var n = 7;
+let pn = Number(params.n);
+var n = (pn !== undefined && pn > 0 && pn < 100 & pn % 1 === 0) ? pn : 7;
 
 function getCell(x, y) {
   if (x > -1 && x < n && y > -1 && y < n) return table.rows[y].cells[x];
