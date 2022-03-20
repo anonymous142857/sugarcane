@@ -7,8 +7,6 @@ let lossTogg = document.getElementById('loss-togg');
 
 var h1 = ((ihl = localStorage.getItem('hide-loss')) === null) ? 1 : Number(ihl);
 
-console.log(h1)
-
 if (h1 === 0) {
   document.body.classList.remove('hide-loss');
   lossTogg.classList.remove('opac');
@@ -43,14 +41,16 @@ function zoomIn() {
   if (zoomlvl < 4) table.setAttribute('zoom', zoomlvl+1)
 }
 
-function getN() {
+function getDimension() {
   while (true) {
-    let k = Number(prompt('몇 곱하기 몇 정사각형입니까? (1 이상 99 이하의 자연수)'));
-    if (!k) {
-      return false;
-    }
-    if (typeof k === 'number' && k > 0 && k < 100 && k % 1 === 0) {
-      return k;
+    let dx = Number(prompt('직사각형의 가로는 얼마입니까? (1 이상 99 이하의 자연수)'));
+    if (!dx) return false;
+    if (typeof dx === 'number' && dx > 0 && dx < 100 && dx % 1 === 0) {
+      let dy = Number(prompt('세로는 몇입니까? (1 이상 99 이하의 자연수)'));
+      if (!dy) return false;
+      if (typeof dy === 'number' && dy > 0 && dy < 100 && dy % 1 === 0) {
+        return [dx, dy];
+      }
     }
   }
 }
@@ -58,8 +58,11 @@ function getN() {
 let pn = Number(params.n);
 var n = (pn !== undefined && pn > 0 && pn < 100 & pn % 1 === 0) ? pn : 7;
 
+let pm = Number(params.m);
+var m = (pm !== undefined && pm > 0 && pm < 100 & pm % 1 === 0) ? pm : 7;
+
 function getCell(x, y) {
-  if (x > -1 && x < n && y > -1 && y < n) return table.rows[y].cells[x];
+  if (x > -1 && x < n && y > -1 && y < m) return table.rows[y].cells[x];
   else return undefined;
 }
 
@@ -148,26 +151,26 @@ var water = function(e) {
   updateText(x, y-2);
 }
 
-function createTable(m) {
+function createTable(dx, dy) {
   table.innerHTML = '';
   wateredCountContainer.innerHTML = 0;
   sugarCountContainer.innerHTML = 0;
   lossCountContainer.innerHTML = 0;
-  for (var i = 0; i < m; i++) {
+  for (var i = 0; i < dy; i++) {
     let row = document.createElement('tr');
-    for (var j = 0; j < m; j++) {
+    for (var j = 0; j < dx; j++) {
       let cell = document.createElement('td');
       cell.addEventListener('click', water);
       cell.setAttribute('x', j);
       cell.setAttribute('y', i);
       let l;
-      if (i === 0 || i === m - 1) {
-        if (j === 0 || j === m - 1) {
+      if (i === 0 || i === dy - 1) {
+        if (j === 0 || j === dx - 1) {
           l = 2;
         } else {
           l = 1;
         }
-      } else if (j === 0 || j === m - 1) {
+      } else if (j === 0 || j === dx - 1) {
         l = 1;
       } else {
         l = 0
@@ -180,4 +183,4 @@ function createTable(m) {
   }
 }
 
-createTable(n);
+createTable(n, m);
