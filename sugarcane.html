@@ -28,7 +28,9 @@
       </div>
       <div class="menu flex fjc">
         <div class="pdlr5"><input class="button" type="reset" onclick="createTable(n, m);" value="지우기"></input></div>
-        <div class="pdlr5"><input class="button" type="reset" onclick="let [dx, dy] = getDimension(); if (dx !== false && dy !== false) {n = dx; m = dy; createTable(n, m); window.history.replaceState({}, '', 'sugarcane.html?n='+ dx + '&m=' + dy)}" value="바꾸기"></input></div>
+        <div class="pdlr5"><input class="button" type="reset" onclick="let arr = getDimension(); if (arr !== false) {n = arr[0]; m = arr[1]; createTable(n, m); window.history.replaceState({}, '', 'sugarcane.html?n='+ n + '&m=' + m)}" value="바꾸기"></input></div>
+        <div class="pdlr5"><input class="button" type="button" onclick="n+=1; createTable(n, m); window.history.replaceState({}, '', 'sugarcane.html?n='+ n + '&m=' + m)" value="+1열"></input></div>
+        <div class="pdlr5"><input class="button" type="button" onclick="n-=1; createTable(n, m); window.history.replaceState({}, '', 'sugarcane.html?n='+ n + '&m=' + m)" value="-1열"></input></div>
       </div>
     </div>
     <div class="abs">
